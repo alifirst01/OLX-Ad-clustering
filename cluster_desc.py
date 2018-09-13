@@ -1,4 +1,5 @@
 import os
+import sys
 import pandas as pd
 import warnings
 from numpy import mean
@@ -9,8 +10,8 @@ from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.feature_extraction.text import TfidfVectorizer
 from utils import tokenize_and_stem, tokenize_only, counter_similarity, manhattan_distance
 
-olx_ads = pd.read_csv(open(os.path.join('data', 'Ads-without-Image-2nd-Oct.csv'), encoding='utf8'), engine='python')
-ad_ids = list(olx_ads['Ad ID'].unique())[:10000]
+olx_ads = pd.read_csv(open(os.path.join('data', sys.argv[1]), encoding='utf8'), engine='python')
+ad_ids = list(olx_ads['Ad ID'].unique())
 warnings.filterwarnings("ignore")
 MDS()
 
